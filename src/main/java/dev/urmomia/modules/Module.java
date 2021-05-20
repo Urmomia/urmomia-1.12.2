@@ -1,14 +1,22 @@
 package dev.urmomia.modules;
 
 
+import dev.urmomia.settings.*;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Module {
 
     public final String name;
     public final String description;
     public final Category category;
-    public final int key;
 
+    public int key;
     public boolean toggled;
+
+    public List<Setting> settings = new ArrayList<>();
 
     public Module(String name, String description, int key, Category category) {
         this.name = name;
@@ -57,6 +65,30 @@ public class Module {
 
     public int getKey() {
         return this.key;
+    }
+
+    public BooleanSetting addBoolean(String name, boolean enabled) {
+        BooleanSetting booleanSetting = new BooleanSetting(name, enabled);
+        this.settings.add(booleanSetting);
+        return booleanSetting;
+    }
+
+    public ColorSetting addColor(String name, Color color) {
+        ColorSetting colorSetting = new ColorSetting(name, color);
+        this.settings.add(colorSetting);
+        return colorSetting;
+    }
+
+    public ModeSetting addMode(String name, String mode, String... modes) {
+        ModeSetting modeSetting = new ModeSetting(name, mode, modes);
+        this.settings.add(modeSetting);
+        return modeSetting;
+    }
+
+    public NumberSetting addNumber(String name, double value, double min, double max) {
+        NumberSetting numberSetting = new NumberSetting(name, value, min, max);
+        this.settings.add(numberSetting);
+        return numberSetting;
     }
 
 }

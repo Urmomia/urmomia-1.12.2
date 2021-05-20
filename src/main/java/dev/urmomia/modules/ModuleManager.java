@@ -9,7 +9,7 @@ public class ModuleManager {
     public ModuleManager() {
         modules = new CopyOnWriteArrayList<>();
 
-        /*
+        /**
          * insert module adding here
          */
     }
